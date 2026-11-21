@@ -5,25 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <h1>Заявки корпуса:</h1>
     <label for="issue">Что случилось?</label>
     <input type="text" name="" id="issue">
-    <p id="issue_message"></p>
+    <p id="issueMessage"></p>
     <label for="place">Где?</label>
     <input type="text" name="" id="place">
-    <p id="place_message"></p>
+    <p id="placeMessage"></p>
     <label for="category">Категория:</label>
     <select name="" id="category">
-        <option value="">Выберите категорию</option>
-        <option value="equipment">Оборудование</option>
-        <option value="auditorium">Аудитория</option>
-        <option value="other">Другое</option>
+        <option value="notSelected">Выберите категорию</option>
+        <option value="Оборудование">Оборудование</option>
+        <option value="Аудитория">Аудитория</option>
+        <option value="Другое">Другое</option>
     </select>
-    <p id="category_message"></p>
-    <button type="button" id="addAplication">Отправить заявку</button>
+    <p id="categoryMessage"></p>
+    <button type="button" id="addApplication">Отправить заявку</button>
     <ul id="listApplication"></ul>
 </body>
 </html>

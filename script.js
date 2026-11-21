@@ -1,11 +1,11 @@
 const issue = document.getElementById('issue')
 const place = document.getElementById('place')
 const category = document.getElementById('category')
-const addAplication = document.getElementById('addApplication')
+const addApplication = document.getElementById('addApplication')
 const listApplication = document.getElementById('listApplication')
-const issueMessage = document.getElementById('issue_message')
-const placeMessage = document.getElementById('place_message')
-const categoryMessage = document.getElementById('category_message')
+const issueMessage = document.getElementById('issueMessage')
+const placeMessage = document.getElementById('placeMessage')
+const categoryMessage = document.getElementById('categoryMessage')
 
 const tickets = [
     {title: "Проектор не включается", room: "203", category: "Оборудование", done: false},
@@ -14,5 +14,40 @@ const tickets = [
 ]
 
 function renderApplication() {
-    listApplication.innerHTML = ""
+    listApplication.innerHTML = ''
+    tickets.forEach((el) => {
+        const li = document.createElement('li')
+        if (el.done === true) {
+            el.done = "Да"
+        } else if (el.done === false) {
+            el.done = "Нет"
+        }
+        li.textContent = `Причина: ${el.title}, Место: ${el.room}, Категория: ${el.category}, Выполнена: ${el.done}`
+        listApplication.append(li)
+    })
 }
+
+addApplication.addEventListener('click', () => {
+    
+    if (issue.value.trim() === '') {
+        issueMessage.innerHTML = "Введите причину"
+    }
+    if (place.value.trim() === '') {
+        placeMessage.innerHTML = "Введите место"
+    }
+    if (category.value === "notSelected") {
+        categoryMessage.innerHTML = "Выберите категорию"
+    }
+    if (issueMessage !== '' && placeMessage !== '' && category.value !== "notSelected") {
+        const newApplication = {
+            title: issue.value.trim(),
+            room: place.value.trim(),
+            category: category.value,
+            done: false
+        }
+        tickets.push(newApplication)
+    }
+    renderApplication()
+})
+
+renderApplication()
