@@ -19,10 +19,15 @@ function renderApplication() {
     tickets.forEach((el) => {
         const li = document.createElement('li')
         const buttonDelet3 = document.createElement('button')
+        const buttonMake = document.createElement('button')
+
+        buttonMake.innerHTML = "Выполнить"
+        buttonMake.type = "button"
+        buttonMake.id = "buttonMake"
+
         buttonDelet3.innerHTML = 'Удалить'
         buttonDelet3.type = "button"
         buttonDelet3.id = "buttonDelet3"
-        
         buttonDelet3.addEventListener('click', () => {
             const index = tickets.indexOf(el)
             if (index !== -1) {
@@ -30,26 +35,28 @@ function renderApplication() {
                 renderApplication()
             }
         })
-        
-        if (el.done === true) {
-            el.done = "Да"
-        } else if (el.done === false) {
-            el.done = "Нет"
-        }
-        if (el.done === "Нет") {
-            const buttonMake = document.createElement('button')
-            buttonMake.innerHTML = "Выполнить"
-            buttonMake.type = "button"
-            buttonMake.id = "buttonMake"
-            li.append(`Причина: ${el.title}, Место: ${el.room}, Категория: ${el.category}, Выполнена: ${el.done}`, buttonMake, buttonDelet3)
-            buttonMake.addEventListener('click', () => {
-                el.done = "Да"
-                renderApplication()
-            })
-            listApplication.append(li)
+
+        if (checkbox.checked === true) {
+            if (el.done === false) {
+                li.append(`Причина: ${el.title}, Место: ${el.room}, Категория: ${el.category}, Выполнена: ${el.done}`, buttonMake, buttonDelet3)
+                buttonMake.addEventListener('click', () => {
+                    el.done = true
+                    renderApplication()
+                })
+                listApplication.append(li)
+            }
         } else {
-            li.append(`Причина: ${el.title}, Место: ${el.room}, Категория: ${el.category}, Выполнена: ${el.done}`, buttonDelet3)
-            listApplication.append(li)
+            if (el.done === false) {
+                li.append(`Причина: ${el.title}, Место: ${el.room}, Категория: ${el.category}, Выполнена: ${el.done}`, buttonMake, buttonDelet3)
+                buttonMake.addEventListener('click', () => {
+                    el.done = true
+                    renderApplication()
+                })
+                listApplication.append(li)
+            } else {
+                li.append(`Причина: ${el.title}, Место: ${el.room}, Категория: ${el.category}, Выполнена: ${el.done}`, buttonDelet3)
+                listApplication.append(li)
+            }
         }
     })
 }
