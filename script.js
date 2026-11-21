@@ -38,23 +38,23 @@ function renderApplication() {
 
         if (checkbox.checked === true) {
             if (el.done === false) {
-                li.append(`Причина: ${el.title}, Место: ${el.room}, Категория: ${el.category}, Выполнена: ${el.done}`, buttonMake, buttonDelet3)
                 buttonMake.addEventListener('click', () => {
                     el.done = true
                     renderApplication()
                 })
+                li.append(`Причина: ${el.title}, Место: ${el.room}, Категория: ${el.category}, Выполнена: Нет`, buttonMake, buttonDelet3)
                 listApplication.append(li)
             }
         } else {
             if (el.done === false) {
-                li.append(`Причина: ${el.title}, Место: ${el.room}, Категория: ${el.category}, Выполнена: ${el.done}`, buttonMake, buttonDelet3)
+                li.append(`Причина: ${el.title}, Место: ${el.room}, Категория: ${el.category}, Выполнена: Нет`, buttonMake, buttonDelet3)
                 buttonMake.addEventListener('click', () => {
                     el.done = true
                     renderApplication()
                 })
                 listApplication.append(li)
             } else {
-                li.append(`Причина: ${el.title}, Место: ${el.room}, Категория: ${el.category}, Выполнена: ${el.done}`, buttonDelet3)
+                li.append(`Причина: ${el.title}, Место: ${el.room}, Категория: ${el.category}, Выполнена: Да`, buttonDelet3)
                 listApplication.append(li)
             }
         }
