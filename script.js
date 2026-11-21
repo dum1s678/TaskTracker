@@ -8,9 +8,9 @@ const placeMessage = document.getElementById('placeMessage')
 const categoryMessage = document.getElementById('categoryMessage')
 
 const tickets = [
-    {title: "Проектор не включается", room: "203", category: "Оборудование", done: false},
-    {title: "Не закрывается окно", room: "105", category: "Аудитория", done: false},
-    {title: "В коридоре не горит свет", room: "Коридор, 2-ой этаж", category: "Другое", done: true}
+    { title: "Проектор не включается", room: "203", category: "Оборудование", done: false },
+    { title: "Не закрывается окно", room: "105", category: "Аудитория", done: false },
+    { title: "В коридоре не горит свет", room: "Коридор, 2-ой этаж", category: "Другое", done: true }
 ]
 
 function renderApplication() {
@@ -22,13 +22,21 @@ function renderApplication() {
         } else if (el.done === false) {
             el.done = "Нет"
         }
-        li.textContent = `Причина: ${el.title}, Место: ${el.room}, Категория: ${el.category}, Выполнена: ${el.done}`
-        listApplication.append(li)
+        if (el.done === false) {
+            const buttonMake = document.createElement('button')
+            buttonMake.innerHTML = "Выполнить"
+            buttonMake.type = "button"
+            buttonMake.id = buttonMake
+            li.textContent = `Причина: ${el.title}, Место: ${el.room}, Категория: ${el.category}, Выполнена: ${el.done}, ${buttonMake}`
+        } else {
+            li.textContent = `Причина: ${el.title}, Место: ${el.room}, Категория: ${el.category}, Выполнена: ${el.done}`
+            listApplication.append(li)
+        }
     })
 }
 
 addApplication.addEventListener('click', () => {
-    
+
     if (issue.value.trim() === '') {
         issueMessage.innerHTML = "Введите причину"
     }
