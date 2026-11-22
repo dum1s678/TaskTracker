@@ -16,6 +16,8 @@ const tickets = [
 
 function renderApplication() {
     listApplication.innerHTML = ''
+    issue.value = ''
+    place.value = ''
     category.value = "notSelected"
     tickets.forEach((el) => {
         const li = document.createElement('li')
