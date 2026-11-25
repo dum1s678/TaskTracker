@@ -19,6 +19,11 @@ function renderApplication() {
     issue.value = ''
     place.value = ''
     category.value = "notSelected"
+
+    if (tickets.length === 0 && checkbox.checked === false) {
+        listApplication.append("Заявок пока нет")
+    }
+
     tickets.forEach((el) => {
         const li = document.createElement('li')
         const buttonDelet3 = document.createElement('button')
@@ -47,10 +52,6 @@ function renderApplication() {
                 })
                 li.append(`Причина: ${el.title}, Место: ${el.room}, Категория: ${el.category}, Выполнена: Нет`, buttonMake, buttonDelet3)
                 listApplication.append(li)
-            } else if (tickets.length === 0 && el.done === true) { 
-                li.append('Открытых заявок нет')
-                listApplication.append(li)
-                renderApplication()
             }
         } else {
             if (el.done === false) {
