@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,25 +9,47 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
+
 <body>
-    <h1>Заявки корпуса:</h1>
-    <label for="issue">Что случилось?</label>
-    <input type="text" name="" id="issue">
-    <p id="issueMessage"></p>
-    <label for="place">Где?</label>
-    <input type="text" name="" id="place">
-    <p id="placeMessage"></p>
-    <label for="category">Категория:</label>
-    <select name="" id="category">
-        <option value="notSelected">Выберите категорию</option>
-        <option value="Оборудование">Оборудование</option>
-        <option value="Аудитория">Аудитория</option>
-        <option value="Другое">Другое</option>
-    </select>
-    <p id="categoryMessage"></p>
-    <button type="button" id="addApplication">Отправить заявку</button>
-    <label for="checkbox">Только открытые:</label>
-    <input type="checkbox" name="" id="checkbox">
-    <ul id="listApplication"></ul>
+    <div class="main">
+        <div class="all">
+            <h1 class="header">Заявки корпуса:</h1>
+            <div class="form">
+                <div class="issue">
+                    <label for="issue">Что случилось?</label>
+                    <input type="text" name="" id="issue">
+                    <p id="issueMessage"></p>
+                </div>
+                <div class="place">
+                    <label for="place">Где?</label>
+                    <input type="text" name="" id="place">
+                    <p id="placeMessage"></p>
+                </div>
+                <div class="category">
+                    <label for="category">Категория:</label>
+                    <select name="" id="category">
+                        <option value="notSelected">Выберите категорию</option>
+                        <option value="Оборудование">Оборудование</option>
+                        <option value="Аудитория">Аудитория</option>
+                        <option value="Другое">Другое</option>
+                    </select>
+                    <p id="categoryMessage"></p>
+                </div>
+                <button type="button" id="addApplication" class="addApplication">Отправить заявку</button>
+            </div>
+            <div class="applications">
+                <div class="onlyOpen">
+                    <label for="checkboxOpen">Только открытые:</label>
+                    <input type="checkbox" name="" id="checkboxOpen">
+                </div>
+                <div class="onlyClose">
+                    <label for="checkboxClose">Только закрытые:</label>
+                    <input type="checkbox" name="" id="checkboxClose">
+                </div>
+                <ul id="listApplication" class="list"></ul>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>

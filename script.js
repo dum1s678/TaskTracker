@@ -6,7 +6,8 @@ const listApplication = document.getElementById('listApplication')
 const issueMessage = document.getElementById('issueMessage')
 const placeMessage = document.getElementById('placeMessage')
 const categoryMessage = document.getElementById('categoryMessage')
-const checkbox = document.getElementById('checkbox')
+const checkboxOpen = document.getElementById('checkboxOpen')
+const checkboxClose = document.getElementById('checkboxClose')
 
 const tickets = [
     { title: "Проектор не включается", room: "203", category: "Оборудование", done: false },
@@ -20,7 +21,7 @@ function renderApplication() {
     place.value = ''
     category.value = "notSelected"
 
-    if (tickets.length === 0 && checkbox.checked === false) {
+    if (tickets.length === 0) {
         listApplication.append("Заявок пока нет")
     }
 
@@ -28,6 +29,11 @@ function renderApplication() {
         const li = document.createElement('li')
         const buttonDelet3 = document.createElement('button')
         const buttonMake = document.createElement('button')
+        const buttonMakeDelet3 = document.createElement('div')
+        buttonMakeDelet3.className = "buttons"
+        buttonMakeDelet3.append(buttonMake, buttonDelet3)
+        
+        li.className = "li"
 
         buttonMake.innerHTML = "Выполнить"
         buttonMake.type = "button"
@@ -46,25 +52,44 @@ function renderApplication() {
             }
         })
 
-        if (checkbox.checked === true) {
+        if (checkboxOpen.checked === true) {
             if (el.done === false) {
                 buttonMake.addEventListener('click', () => {
                     el.done = true
                     renderApplication()
                 })
-                li.append(`Причина: ${el.title}, Место: ${el.room}, Категория: ${el.category}, Выполнена: Нет`, buttonMake, buttonDelet3)
+                li.append(`Причина: ${el.title}, Место: ${el.room}, Категория: ${el.category}, Выполнена: Нет`, buttonMakeDelet3)
                 listApplication.append(li)
             }
         } else {
             if (el.done === false) {
-                li.append(`Причина: ${el.title}, Место: ${el.room}, Категория: ${el.category}, Выполнена: Нет`, buttonMake, buttonDelet3)
+                li.append(`Причина: ${el.title}, Место: ${el.room}, Категория: ${el.category}, Выполнена: Нет`, buttonMakeDelet3)
                 buttonMake.addEventListener('click', () => {
                     el.done = true
                     renderApplication()
                 })
                 listApplication.append(li)
             } else {
-                li.append(`Причина: ${el.title}, Место: ${el.room}, Категория: ${el.category}, Выполнена: Да`, buttonDelet3)
+                li.append(`Причина: ${el.title}, Место: ${el.room}, Категория: ${el.category}, Выполнена: Да`, buttonMakeDelet3)
+                listApplication.append(li)
+            }
+        }
+        
+        if (checkboxClose.checked === true) {
+            if (el.done === true) {
+                li.append(`Причина: ${el.title}, Место: ${el.room}, Категория: ${el.category}, Выполнена: Да`, buttonMakeDelet3)
+                listApplication.append(li)
+            }
+        } else {
+            if (el.done === false) {
+                li.append(`Причина: ${el.title}, Место: ${el.room}, Категория: ${el.category}, Выполнена: Нет`, buttonMakeDelet3)
+                buttonMake.addEventListener('click', () => {
+                    el.done = true
+                    renderApplication()
+                })
+                listApplication.append(li)
+            } else {
+                li.append(`Причина: ${el.title}, Место: ${el.room}, Категория: ${el.category}, Выполнена: Да`, buttonMakeDelet3)
                 listApplication.append(li)
             }
         }
@@ -72,7 +97,6 @@ function renderApplication() {
 }
 
 addApplication.addEventListener('click', () => {
-
     if (issue.value.trim() === '') {
         issueMessage.innerHTML = "Введите причину"
     }
