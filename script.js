@@ -32,10 +32,12 @@ function renderApplication() {
         buttonMake.innerHTML = "Выполнить"
         buttonMake.type = "button"
         buttonMake.id = "buttonMake"
+        buttonMake.className = "buttonMake"
 
         buttonDelet3.innerHTML = 'Удалить'
         buttonDelet3.type = "button"
         buttonDelet3.id = "buttonDelet3"
+        buttonDelet3.className = "buttonDelet3"
         buttonDelet3.addEventListener('click', () => {
             const index = tickets.indexOf(el)
             if (index !== -1) {
