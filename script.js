@@ -61,43 +61,23 @@ function renderApplication() {
                 li.append(`Причина: ${el.title}, Место: ${el.room}, Категория: ${el.category}, Выполнена: Нет`, buttonMakeDelet3)
                 listApplication.append(li)
             }
-        } else if (checkboxClose === false) {
-            if (el.done === false) {
-                li.append(`Причина: ${el.title}, Место: ${el.room}, Категория: ${el.category}, Выполнена: Нет`, buttonMakeDelet3)
-                buttonMake.addEventListener('click', () => {
-                    el.done = true
-                    renderApplication()
-                })
-                listApplication.append(li)
-            } else {
-                li.append(`Причина: ${el.title}, Место: ${el.room}, Категория: ${el.category}, Выполнена: Да`, buttonMakeDelet3)
-                listApplication.append(li)
-            }
-        }
-        else if (checkboxClose.checked === true) {
+        } else if (checkboxClose === true) {
             if (el.done === true) {
-                li.append(`Причина: ${el.title}, Место: ${el.room}, Категория: ${el.category}, Выполнена: Да`, buttonMakeDelet3)
-                listApplication.append(li)
-            }
-        }
-
-        if (el.done === true) {
-            li.append(`Причина: ${el.title}, Место: ${el.room}, Категория: ${el.category}, Выполнена: Да`, buttonMakeDelet3)
-            listApplication.append(li)
-        }
-        else {
-            if (el.done === false) {
                 li.append(`Причина: ${el.title}, Место: ${el.room}, Категория: ${el.category}, Выполнена: Нет`, buttonMakeDelet3)
-                buttonMake.addEventListener('click', () => {
-                    el.done = true
-                    renderApplication()
-                })
                 listApplication.append(li)
             } else {
-                li.append(`Причина: ${el.title}, Место: ${el.room}, Категория: ${el.category}, Выполнена: Да`, buttonMakeDelet3)
-                listApplication.append(li)
+                if (el.done === false) {
+                    li.append(`Причина: ${el.title}, Место: ${el.room}, Категория: ${el.category}, Выполнена: Нет`, buttonMakeDelet3)
+                    buttonMake.addEventListener('click', () => {
+                        el.done = true
+                        renderApplication()
+                    })
+                    listApplication.append(li)
+                } else {
+                    li.append(`Причина: ${el.title}, Место: ${el.room}, Категория: ${el.category}, Выполнена: Да`, buttonMakeDelet3)
+                    listApplication.append(li)
+                }
             }
-
         }
     })
 }
@@ -125,6 +105,10 @@ addApplication.addEventListener('click', () => {
 })
 
 checkboxOpen.addEventListener('change', () => {
+    renderApplication()
+})
+
+checkboxClose.addEventListener('change', () => {
     renderApplication()
 })
 
