@@ -19,6 +19,7 @@
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.192);
     border-radius: 25px;
     padding: 50px 0;
+    background-color: rgb(239, 246, 252);
 }
 
 .all {
@@ -74,6 +75,26 @@
     display: flex;
     gap: 10px;
     margin-left: auto;
+}
+
+.buttonMake {
+    background-color: rgba(92, 179, 92, 0.87);
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+}
+.buttonDelet3 {
+    background-color: rgb(255, 0, 0);
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+}
+.addApplication {
+    background-color: rgb(0, 110, 255);
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    color: white;
 }
 
 .filters {
