@@ -32,7 +32,7 @@ function renderApplication() {
         const buttonMakeDelet3 = document.createElement('div')
         buttonMakeDelet3.className = "buttons"
         buttonMakeDelet3.append(buttonMake, buttonDelet3)
-        
+
         li.className = "li"
 
         buttonMake.innerHTML = "Выполнить"
@@ -61,7 +61,7 @@ function renderApplication() {
                 li.append(`Причина: ${el.title}, Место: ${el.room}, Категория: ${el.category}, Выполнена: Нет`, buttonMakeDelet3)
                 listApplication.append(li)
             }
-        } else {
+        } else if (checkboxClose === false) {
             if (el.done === false) {
                 li.append(`Причина: ${el.title}, Место: ${el.room}, Категория: ${el.category}, Выполнена: Нет`, buttonMakeDelet3)
                 buttonMake.addEventListener('click', () => {
@@ -74,13 +74,18 @@ function renderApplication() {
                 listApplication.append(li)
             }
         }
-        
-        if (checkboxClose.checked === true) {
+        else if (checkboxClose.checked === true) {
             if (el.done === true) {
                 li.append(`Причина: ${el.title}, Место: ${el.room}, Категория: ${el.category}, Выполнена: Да`, buttonMakeDelet3)
                 listApplication.append(li)
             }
-        } else {
+        }
+
+        if (el.done === true) {
+            li.append(`Причина: ${el.title}, Место: ${el.room}, Категория: ${el.category}, Выполнена: Да`, buttonMakeDelet3)
+            listApplication.append(li)
+        }
+        else {
             if (el.done === false) {
                 li.append(`Причина: ${el.title}, Место: ${el.room}, Категория: ${el.category}, Выполнена: Нет`, buttonMakeDelet3)
                 buttonMake.addEventListener('click', () => {
@@ -92,6 +97,7 @@ function renderApplication() {
                 li.append(`Причина: ${el.title}, Место: ${el.room}, Категория: ${el.category}, Выполнена: Да`, buttonMakeDelet3)
                 listApplication.append(li)
             }
+
         }
     })
 }
@@ -118,7 +124,7 @@ addApplication.addEventListener('click', () => {
     renderApplication()
 })
 
-checkbox.addEventListener('change', () => {
+checkboxOpen.addEventListener('change', () => {
     renderApplication()
 })
 

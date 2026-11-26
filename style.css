@@ -76,7 +76,13 @@
     margin-left: auto;
 }
 
-.applications {
+.filters {
     display: flex;
     gap: 15px;
+    flex-direction: row;
+}
+
+.applications {
+    display: flex;
+    flex-direction: column;
 }
